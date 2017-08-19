@@ -84,6 +84,7 @@
     <Compile Include="ArrayHelpers.cs" />
     <Compile Include="AssertHelpers.cs" />
     <Compile Include="CombinatoricsTests\CombinatoricsCountingTest.cs" />
+    <Compile Include="CombinatoricsTests\CombinatoricsGenerationTest.cs" />
     <Compile Include="ComplexTests\Complex32Test.cs" />
     <Compile Include="ComplexTests\Complex32Test.TextHandling.cs" />
     <Compile Include="ComplexTests\ComplexTest.cs" />

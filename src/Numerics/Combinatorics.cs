@@ -126,6 +126,52 @@ namespace MathNet.Numerics
         }
 
         /// <summary>
+        /// Count the number of possible permutations (without repetition).
+        /// </summary>
+        /// <param name="n">Number of (distinguishable) elements in the set.</param>
+        /// <returns>Maximum number of permutations without repetition.</returns>
+        public static IEnumerable<ICollection<T>> Permutations<T>(ICollection<T> elements)
+        {
+            return Permutations(elements, elements.Count);
+        }
+
+        /// <summary>
+        /// Generate permutations of a collection.
+        /// </summary>
+        /// <param name="n">Number of (distinguishable) elements in the permutation.</param>
+        /// <returns>Maximum number of permutations without repetition.</returns>
+        public static IEnumerable<ICollection<T>> Permutations<T>(ICollection<T> elements, int n)
+        {
+            var elements_ = elements.ToList();
+            var c = Enumerable.Repeat(0, n).ToArray();
+            yield return elements_.ToList();
+
+            int i = 0;
+            while (i < n)
+            {
+                if (c[i] < i)
+                {
+                    Swap(elements_, i % 2 == 0 ? 0 : c[i], i);
+                    yield return elements_.ToList();
+                    c[i] += 1;
+                    i = 0;
+                }
+                else
+                {
+                    c[i] = 0;
+                    i++;
+                }
+            }
+        }
+
+        private static void Swap<T>(IList<T> array, int firstIndex, int secondIndex)
+        {
+            var tmp = array[firstIndex];
+            array[firstIndex] = array[secondIndex];
+            array[secondIndex] = tmp;
+        }
+
+        /// <summary>
         /// Generate a random permutation, without repetition, by generating the index numbers 0 to N-1 and shuffle them randomly.
         /// Implemented using Fisher-Yates Shuffling.
         /// </summary>

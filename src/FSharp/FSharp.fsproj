@@ -47,6 +47,8 @@
     <DefineConstants>NETSTANDARD</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="FSharp.NET.Sdk" Version="1.0.*" PrivateAssets="All" />
+    <PackageReference Include="FSharp.Core" Version="4.1.*" />
     <ProjectReference Include="..\Numerics\Numerics.csproj" />
   </ItemGroup>
   <ItemGroup>
